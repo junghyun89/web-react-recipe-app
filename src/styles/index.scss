@@ -22,6 +22,8 @@
 body {
   font-size: var(--font-size);
   font-family: 'Roboto', sans-serif;
+  padding-top: 55px;
+  background-color: var(--background-color);
 }
 
 a {
@@ -67,8 +69,12 @@ img {
 
 .section {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 3vw;
+  &.d-block {
+    display: block;
+  }
   .title {
     color: var(--text-color);
     font-size: 2.5em;
@@ -90,73 +96,85 @@ img {
 @import 'partials/hero-section.scss';
 @import 'partials/improve-section.scss';
 @import 'partials/quote-section.scss';
+@import 'partials/chiefs-section.scss';
+@import 'partials/previous-searches';
+@import 'partials/recipes-section';
 
-
-.section.chiefs {
-  display: block;
-}
-
-.top-chiefs-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 1.5em;
-  margin-top: 3em;
-}
-
-.chief-card {
-  display: flex;
-  height: 120px;
-  background-color: var(--background-color);
+.options-container {
+  box-shadow: 0 5px 10px var(--shadow-color);
+  padding: 1em;
   border-radius: 5px;
-  overflow: hidden;
-  img {
-    height: 100%;
-    width: 120px;
-    border-radius: 5px;
+  border-left: .5em solid var(--primary-color);
+  background-color: var(--background-light);
+  margin-top: 1em;
+  display: flex;
+  gap: 1em;
+  .option {
+    height: 3.5em;
+    width: 3.5em;
     box-shadow: 0 3px 6px var(--shadow-color);
-  }
-  .chief-card-info {
-    height: 100%;
+    border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: .5em;
-    padding-left: 1em;
-    .chief-card-name {
-      font-size: 1.5em;
-      color: var(--text-color);
+    justify-content: center;
+    align-items: center;
+    &.light {
+      background-color: #fff;
     }
-    .chief-recipe-count, .chief-cuisine {
-      font-size: 1.2em;
-      color: var(--text-light);
+    &.dark {
+      background-color: rgb(29, 29, 29);
     }
-    .chief-icons {
-      font-size: 1.2em;
+    .check {
+      height: 2.5em;
+      width: 2.5em;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 5px var(--shadow-color);
       svg {
-        margin-right: .5em;
-        &:nth-child(1) {
-          color: #0063f7;
-        }
-        &:nth-child(2) {
-          color: #13b4ff;
-        }
-        &:nth-child(3) {
-          color: #ff0056;
-        }
+        height: 1.5em;
+        width: 1.5em;
       }
     }
   }
+  .btn span {
+    display: inline-block;
+    margin-left: .5em;
+  }
 }
+
+.d-block h2 {
+  font-size: 1.75em;
+  color: var(--text-color)
+}
+
+
+@import 'partials/footer.scss';
+
 
 .main {
   padding-block: 3vw;
 }
 
 .container {
-  padding-inline: 12vw;
+  padding-inline: 25vw;
 }
 
 @import 'partials/animations.scss';
+
+@media screen and (max-width:1280px) {
+  .container {
+    padding-inline: 18vw;
+  }
+}
+
+@media screen and (max-width:1050px) {
+  .container {
+    padding-inline: 12vw;
+  }
+}
+
 @media screen and (max-width:768px) {
   .navbar {
     .nav-links {
@@ -166,7 +184,42 @@ img {
       display: block;
     }
   }
+  .section {
+    .col {
+      width: 100%;
+      padding: 0 !important;
+      text-align: center;
+      margin-bottom: 2em;
+    }
+  }
+  .skill-item {
+    display: inline-block;
+    margin: .75em;
+  }
+  .section.improve-skills .btn {
+    display: block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
   .chief-card {
     box-shadow: 0 5px 10px var(--shadow-color);
+  }
+  .container {
+    padding-inline: 6vw;
+  }
+  .footer {
+    grid-template-columns: repeat(4, 1fr);
+    .footer-section:nth-child(1) {
+      grid-column: span 4;
+    }
+    .footer-section:nth-child(2), .footer-section:nth-child(3) {
+      grid-column: span 2;
+    }
+  }
+}
+
+@media screen and (max-width:480px) {
+  .container {
+    padding-inline: 3vw;
   }
 }
